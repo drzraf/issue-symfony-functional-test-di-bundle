@@ -30,13 +30,7 @@ class AppKernel extends BaseKernel
             new \Symfony\Bundle\MonologBundle\MonologBundle(),
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            /*
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new \Symfony\Bundle\MakerBundle\MakerBundle(),
-            new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            */
             new \MyBundle\MyBundle()
         ];
     }
@@ -46,7 +40,11 @@ class AppKernel extends BaseKernel
         $container->loadFromExtension('framework', [
             'secret' => 'S0ME_SECRET'
         ]);
-
+        $container->loadFromExtension('doctrine', [
+            'dbal' => ['driver' => 'pdo_sqlite',
+                       'memory' => true],
+            'orm' => []
+        ]);
         $container->setParameter('container.autowiring.strict_mode', true);
         $container->setParameter('container.dumper.inline_class_loader', true);
         $confDir = $this->getProjectDir() . '/Resources/config';
