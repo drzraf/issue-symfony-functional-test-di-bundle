@@ -1,0 +1,28 @@
+$ ./vendor/bin/simple-phpunit --debug -v  tests/Functional/SynchronizeTest.php 
+PHPUnit 7.5.14 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 7.2.19-0ubuntu0.19.04.2 with Xdebug 2.6.1
+Configuration: /phpunit.xml.dist
+
+Testing MyBundle\Tests\Functional\SynchronizeTest
+Test 'MyBundle\Tests\Functional\SynchronizeTest::testEnqueueSync' started
+Test 'MyBundle\Tests\Functional\SynchronizeTest::testEnqueueSync' ended
+
+
+Time: 480 ms, Memory: 20.00 MB
+
+There was 1 error:
+
+1) MyBundle\Tests\Functional\SynchronizeTest::testEnqueueSync
+Symfony\Component\DependencyInjection\Exception\RuntimeException: Cannot autowire service "MyBundle\Controller\QueueController": argument "$em" of method "__construct()" references interface "Doctrine\ORM\EntityManagerInterface" but no such service exists. Did you create a class that implements this interface?
+
+/vendor/symfony/dependency-injection/Compiler/DefinitionErrorExceptionPass.php:54
+/vendor/symfony/dependency-injection/Compiler/AbstractRecursivePass.php:82
+/vendor/symfony/dependency-injection/Compiler/DefinitionErrorExceptionPass.php:32
+/vendor/symfony/dependency-injection/Compiler/AbstractRecursivePass.php:46
+/vendor/symfony/dependency-injection/Compiler/Compiler.php:95
+/vendor/symfony/dependency-injection/ContainerBuilder.php:756
+/vendor/symfony/http-kernel/Kernel.php:556
+/vendor/symfony/http-kernel/Kernel.php:133
+/vendor/nyholm/symfony-bundle-test/src/BaseBundleTestCase.php:43
+/tests/Functional/SynchronizeTest.php:36

@@ -1,0 +1,11 @@
+parameters: []
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Cygne\CygneSyncBundle\:
+        resource: '../../{Controller,DestinationDriver,Repository,Service}'
+        #exclude: '../../{tests,vendor}'
